@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rakhi Pay | Checkout</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Pay securely using Rakhi Pay - The standard currency portal for high-aura digital transactions.">
+</head>
+<body>
+  <div class="ambient-cyan"></div>
+
+  <div class="container">
+    <a href="index.html" class="back-link">
+      <span>←</span> Back to Catalog
+    </a>
+
+    <header style="margin-bottom: 2.5rem; text-align: left;">
+      <div class="badge" style="background: rgba(6, 182, 212, 0.15); border-color: var(--cyan); color: #22d3ee;">⚡ Secure Checkout</div>
+      <h1 style="font-size: clamp(2rem, 4vw, 3rem); text-align: left;"><span class="gradient">Rakhi Pay</span></h1>
+      <p style="margin: 0;" class="subtitle">Complete your transaction with absolute aura protection. 256-bit vibes encryption active.</p>
+    </header>
+
+    <div class="split-layout">
+      <!-- Left side: Interactive Card Visualization & Info -->
+      <div>
+        <div class="holo-card-container">
+          <div class="holo-card" id="credit-card" onclick="flipCard()">
+            <div class="holo-card-inner">
+              <div class="holo-brand">
+                <span class="holo-logo">⚡ RAKHI CARD</span>
+                <div class="holo-chip"></div>
+              </div>
+              <div class="holo-number" id="card-display-number">•••• •••• •••• ••••</div>
+              <div class="holo-info">
+                <div class="holo-info-item">
+                  <span>Card Holder</span>
+                  <p id="card-display-name">CHAD RIZZLER</p>
+                </div>
+                <div class="holo-info-item">
+                  <span>Expires</span>
+                  <p id="card-display-expiry">09/99</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--card-border); border-radius: 20px; padding: 1.5rem; font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary);">
+          <h4 style="color: #fff; margin-bottom: 0.5rem; font-family: var(--font-heading); display: flex; align-items: center; gap: 0.5rem;">🔒 Rakhi Aura Protection Plan</h4>
+          Your transaction is safeguarded by Rakhi Pay's premium alignment shields. If this treatment does not increase your aura level by at least +50 points within 24 hours, request an immediate vibe-refund.
+        </div>
+      </div>
+
+      <!-- Right side: Payment dashboard details -->
+      <div class="pay-panel">
+        <h2 class="pay-title">Choose Payment Vibe</h2>
+        
+        <div class="item-summary">
+          <div class="summary-details">
+            <h3 id="checkout-item-name">Peacock Massage</h3>
+            <p>Premium Aura Treatment Package</p>
+          </div>
+          <div class="summary-price" id="checkout-item-price">₹999,999</div>
+        </div>
+
+        <div class="pay-methods">
+          <button class="method-btn active" id="method-card" onclick="switchMethod('card')">
+            <span class="icon">💳</span>
+            <span>Aura Card</span>
+          </button>
+          <button class="method-btn" id="method-upi" onclick="switchMethod('upi')">
+            <span class="icon">📱</span>
+            <span>UPI Scanner</span>
+          </button>
+        </div>
+
+        <!-- Card Form Fields -->
+        <div id="card-fields">
+          <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" placeholder="4242 4242 4242 4242" maxlength="19" oninput="updateCardNumber(this.value)">
+          </div>
+          <div class="form-group">
+            <label for="card-name">Cardholder Name</label>
+            <input type="text" id="card-name" placeholder="CHAD RIZZLER" maxlength="25" oninput="updateCardName(this.value)">
+          </div>
+          <div class="input-row">
+            <div class="form-group">
+              <label for="card-expiry">Expiry Date</label>
+              <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" oninput="updateCardExpiry(this.value)">
+            </div>
+            <div class="form-group">
+              <label for="card-cvv">CVV Code</label>
+              <input type="password" id="card-cvv" placeholder="•••" maxlength="3">
+            </div>
+          </div>
+        </div>
+
+        <!-- UPI QR scanner fields -->
+        <div id="upi-fields" class="upi-section">
+          <p style="margin-bottom: 1.25rem; font-size: 0.95rem; color: var(--text-secondary);">Scan this secure QR code using any UPI payment app to settle instantly.</p>
+          <div class="qr-mock">
+            <div class="qr-dots"></div>
+            <div class="qr-corners"></div>
+            <div class="qr-center-logo">₹</div>
+          </div>
+          <div style="font-family: var(--font-heading); font-weight: bold; font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem;" id="upi-id-label">rakhipay@aura</div>
+          <p style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Valid for 05:00 minutes</p>
+        </div>
+
+        <!-- Swipe-to-Pay confirmation slider widget -->
+        <div class="swipe-container" id="swipe-container">
+          <div class="swipe-bg" id="swipe-bg"></div>
+          <div class="swipe-text" id="swipe-text">SWIPE RIGHT TO PAY</div>
+          <div class="swipe-slider" id="swipe-slider">➔</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Dialog overlay screen -->
+  <div class="success-overlay" id="success-overlay">
+    <div class="success-card">
+      <div class="success-icon">✓</div>
+      <h2 class="success-title">Payment Approved!</h2>
+      <p class="success-desc" id="success-message">Your transaction of ₹999,999 has been fully secured with Rakhi Pay. Aura levels adjusted: **+1000**.</p>
+      
+      <div class="receipt-box">
+        <div class="receipt-row">
+          <span class="receipt-label">Billing Target</span>
+          <span id="receipt-item">Peacock Massage</span>
+        </div>
+        <div class="receipt-row">
+          <span class="receipt-label">Gateway Status</span>
+          <span style="color: var(--success);">SUCCESS (100% Aura-safe)</span>
+        </div>
+        <div class="receipt-row">
+          <span class="receipt-label">Transaction ID</span>
+          <span id="receipt-txid">TXN-739178491</span>
+        </div>
+        <div class="receipt-row">
+          <span class="receipt-label">Grand Total Paid</span>
+          <span id="receipt-price" style="color: var(--cyan);">₹999,999</span>
+        </div>
+      </div>
+
+      <button class="btn-done" onclick="window.location.href='https://discord.com/users/1238014084142862366'">Unlock Bliss 🚀</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
