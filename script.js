@@ -236,41 +236,23 @@ function initSwipeSlider() {
   window.addEventListener('touchend', onDragEnd);
 }
 
-// Payment successful transition
 function triggerPaymentFlow() {
   const container = document.getElementById('swipe-container');
   // Disable slider interface
   container.style.pointerEvents = 'none';
 
-  // Start checkout animations
-  const overlay = document.getElementById('success-overlay');
-  
-  // Set dynamic receipt details
-  const name = document.getElementById('checkout-item-name').innerText;
-  const price = document.getElementById('checkout-item-price').innerText;
-  
-  document.getElementById('receipt-item').innerText = name;
-  document.getElementById('receipt-price').innerText = price;
-  document.getElementById('receipt-txid').innerText = `TXN-${Math.floor(100000000 + Math.random() * 900000000)}`;
-  
-  // Custom funny message mapping
-  let msg = `Your transaction has been securely approved by Rakhi Pay. Aura levels adjusted: **+1000**. Ready for alignment!`;
-  if (name.includes('Peacock')) {
-    msg = `PEACOCK ASCENSION UNLOCKED! Your aura level has broken past standard digital dimensions (+999,999 Aura). Metaphysical balance fully restored. Enjoy your absolute premium bliss.`;
-  } else if (name.includes('Mod One') || name.includes('Modi')) {
-    msg = `CELESTIAL GODHOOD SECURED! You spent 99 Crores. The diamond wrap, anti-gravity chamber, and cyber orchestra are primed for your highness. Prepare for total physical nirvana.`;
-  }
-  document.getElementById('success-message').innerText = msg;
+  // Play audio arpeggio chime immediately
+  playSuccessArpeggio();
 
-  // Launch simulated verification delay (looks extremely cool and legitimate!)
+  // Change swipe text to processing state
+  const text = document.getElementById('swipe-text');
+  text.innerText = "⚡ SECURING TRANSACTION...";
+  text.style.opacity = '1';
+
+  // Redirect instantly after a short premium transition delay
   setTimeout(() => {
-    overlay.classList.add('active');
-    playSuccessArpeggio();
-    // Auto-redirect to discord profile after 3.5 seconds
-    setTimeout(() => {
-      window.location.href = 'https://discord.com/users/1238014084142862366';
-    }, 3500);
-  }, 2200);
+    window.location.href = 'https://discord.com/users/1238014084142862366';
+  }, 1200);
 }
 
 // ----------------------------------------------------
