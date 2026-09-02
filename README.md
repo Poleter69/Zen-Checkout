@@ -1,8 +1,8 @@
-# ⚡ Aura Alignment Lab & Rakhi Pay
+# ⚡ Aura Alignment Lab & Zen Checkout
 
-A high-fidelity, visually stunning Gen-Z styled luxury spa catalog coupled with a state-of-the-art futuristic checkout portal called **Rakhi Pay**. 
+A high-fidelity, visually stunning Gen-Z styled luxury spa catalog coupled with a state-of-the-art futuristic checkout portal called **Zen Checkout**.
 
-Live repository: [Poleter69/Rakhi-pay](https://github.com/Poleter69/Rakhi-pay)
+Live repository: https://github.com/Poleter69/Rakhi-pay
 
 ---
 
@@ -14,7 +14,7 @@ Live repository: [Poleter69/Rakhi-pay](https://github.com/Poleter69/Rakhi-pay)
 * **Direct Hyperlinks**: Native HTML anchor elements allow seamless browser interactions (right-click to copy, middle-click to open in a new tab).
 * **Category Filters**: Instant list filtering by Hype, Budget, and God-Tier packages.
 
-### 💳 2. Rakhi Pay (Futuristic Checkout)
+### 💳 2. Zen Checkout (Futuristic Checkout)
 * **Holographic Glassmorphic Credit Card**: Custom 3D cursor-tracking tilt animation. Typing your card details updates the cardholder name, expiry date, and card numbers dynamically.
 * **UPI Scanner Vibe**: Sleek toggled UPI portal complete with secure QR code container and custom addressing.
 * **Swipe-to-Pay Slider**: Interactive dragging confirmation bar. Sliding fully to the right locks the state and initializes a secure vibe transaction.
